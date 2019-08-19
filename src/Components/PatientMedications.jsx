@@ -42,7 +42,7 @@ class PatientMedications extends Component
             <div >
             <   select style={{width:"250px"}} size="10" >
                     {this.state.items.map(item => (
-                        <option value = {item.medname} >
+                        <option value = {item.medname} key = {item.medname}>
                                 {item.medname} {item.dose} {item.startDate} {item.stopDate} 
                         </option>
                     ))}

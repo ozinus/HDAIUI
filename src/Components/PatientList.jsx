@@ -37,7 +37,7 @@ class PatientList extends Component
             <div >
             <select style={{width:"150px"}} size="10" onChange = {this.props.PatientSelected} >
                     {this.state.items.map(item => (
-                        <option value = {item._id}>
+                        <option value = {item._id} key = {item._id}>
                                 {item.firstName} {item.lastName}
                         </option>
                     ))}

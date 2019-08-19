@@ -34,14 +34,13 @@ class PatientView extends Component {
     PatientSelected = (e) => {
           this.setState({SelectedPatientId : e.target.value});
            
-          fetch("http://localhost:3002/Patients/"+e.target.value,{ method:'Get'})
+          fetch("http://localhost:3002/Patients/TempPulse/"+e.target.value,{ method:'Get'})
             .then(res => res.json())
             .then(
                 (result) => {
                  
                     this.setState({
-                       items : result,
-                      
+                       items : result
                     });
                 },
                 (error) => {
@@ -79,17 +78,18 @@ class PatientView extends Component {
 
   render()
   {
+   
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="App">
         <header className="App-header">
-          <p>
+          <div>
             <PatientList PatientSelected={this.PatientSelected} ></PatientList>
             <PatientMedications SelectedPatientId={this.state.SelectedPatientId}> </PatientMedications>
             Temperature: <input type="text" value={this.state.items.temperature} onChange={this.handleTempChange}></input> <br/>
             Pulse: <input type="text" value={this.state.items.pulse} onChange={this.handlePulseChange}></input> <br/>
             <input type="submit" value="Update Temp/Pulse" />
-          </p>
+          </div>
         </header>
       </div> 
     </form>
